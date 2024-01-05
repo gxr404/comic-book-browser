@@ -5,9 +5,10 @@ temp
 assets
 .vscode
 .np-config.js
-.eslintrc.js
+.eslintrc.cjs
 .eslintignore
 .editorconfig
+prettierrc.js
 
 server
 client
