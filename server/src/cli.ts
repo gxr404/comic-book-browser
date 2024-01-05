@@ -26,8 +26,10 @@ cli.help()
 cli.version(version)
 
 try {
-  const {options} = cli.parse()
-  run(options as IOptions)
+  const { options } = cli.parse()
+  if (!options.help && !options.version) {
+    run(options as IOptions)
+  }
 } catch (err: any) {
   logger.error(err.message || 'unknown exception')
   process.exit(1)
