@@ -32,7 +32,7 @@
     "build:server": "tsc -p server/tsconfig.json && tsc-alias -p server/tsconfig.json",
     "eslintLog": "eslint . > eslint.log",
     "clean": "rimraf client-dist server-dist",
-    "np": "np",
+    "np": "np --no-tests",
     "release": "run-s clean build np"
   },
   "dependencies": {
