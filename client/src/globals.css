@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  /* primary */
+  /* #fff */
+  --c-p-1: 248 248 248;
+  /* rgb(245 248 252) */
+  /* rgb(250 250 251) */
+  --c-p-2: 255 255 255;
+  /* sky-400 rgb(245 127 23) */
+  --c-p-3: 245 127 23;
+  /* sky-200 rgb(249 202 113) */
+  --c-p-4: 249 202 113;
+  --c-br: rgb(15 23 42 / 10%);
+  /* secondary */
+  --c-s-1: #000;
+  /* background-color: #0f172abf; */
+}
+
+:root.dark {
+  color-scheme: dark;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+
+  /* primary */
+  /* #0f172a */
+  --c-p-1: 15 23 42;
+  /* #1e293b */
+  --c-p-2: 30 41 59;
+  /* sky-400 #38bdf8 */
+  --c-p-3: 56 189 248;
+  /* sky-200 #bae6fd */
+  --c-p-4: 186 230 253;
+  --c-br: rgb(203 213 225 / 10%);
+  /* secondary */
+  --c-s-1: #fff;
+  /* bg-slate-900\/75 */
+}
+
+
+
+@layer base {
+  a:active {
+    @apply text-p-4;
+  }
+  a:hover {
+    @apply text-p-3;
+  }
+}
