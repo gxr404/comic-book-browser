@@ -1,6 +1,6 @@
 {
   "name": "comic-book-browser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Comic Book Browser ",
   "bin": {
     "comic-book-browser": "bin/index.js"
