@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { message } from 'antd'
-import { useLocalStorageState } from 'ahooks'
-import { LOCAL_STORAGE_HISTORY } from '@/constant'
+import { clearCache, useLocalStorageState } from 'ahooks'
+import { LOCAL_STORAGE_HISTORY, CACHE_KEY } from '@/constant'
 import * as api from '@/api/index'
 import type { BookInfo } from '@/api/index'
 import type { ILocalHistoryItem } from '@/constant'
@@ -44,6 +44,7 @@ export default function BookList({bookInfoList}: Readonly<BookListProps>) {
   async function fetchCleanCache(){
     if (msgExist) return
     await api.cleanCache()
+    clearCache(CACHE_KEY.comicBookList())
     messageLog('已清理缓存')
     navigate('/')
   }

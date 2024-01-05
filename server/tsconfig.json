@@ -9,7 +9,6 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "../server-dist",
     "moduleResolution": "Node",
-
     "removeComments": true,
     // "allowImportingTsExtensions": true,
     // "isolatedModules": true,
