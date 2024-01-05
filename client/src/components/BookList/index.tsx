@@ -46,7 +46,7 @@ export default function BookList({bookInfoList}: Readonly<BookListProps>) {
     await api.cleanCache()
     clearCache(CACHE_KEY.comicBookList())
     messageLog('已清理缓存')
-    navigate('/')
+    navigate(0)
   }
 
   function messageLog(msg: string) {
