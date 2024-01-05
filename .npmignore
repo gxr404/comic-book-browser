@@ -8,7 +8,7 @@ assets
 .eslintrc.cjs
 .eslintignore
 .editorconfig
-prettierrc.js
+.prettierrc.js
 
 server
 client
