@@ -30,7 +30,7 @@ export default function Home() {
       <main className="max-w-screen-md bg-p-2 rounded-md p-4 sm:p-8 shadow-br m-4 sm:mx-8 md:mx-auto">
         { bookInfoList.length > 0 ?
           (
-            <div className="grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2">
+            <div className={`grid gap-4 md:gap-8 grid-cols-1 ${bookInfoList.length !== 1 ? 'md:grid-cols-2' : ''}`}>
               <BookList bookInfoList={bookInfoList} />
             </div>
           ) : (
