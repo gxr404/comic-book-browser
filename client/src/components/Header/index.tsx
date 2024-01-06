@@ -1,35 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Search from '@/components/Search'
 import { useTheme } from '@/hooks/useTheme'
-import type { BookInfo } from '@/api'
+import type { ComicBookListRes } from '@/api'
 
 import Logo from '@/assets/logo.png'
 import LogoDark from '@/assets/logo-dark.png'
+import { useEventListener } from 'ahooks'
 
 interface HeaderProps {
-  bookInfoList: BookInfo[]
+  bookInfoList: ComicBookListRes
 }
 
 export default function Header(props: Readonly<HeaderProps>) {
   const { bookInfoList = [] } = props
   const [, {switchTheme}] = useTheme()
   const [isOpaque, setIsOpaque] = useState(false)
-  useEffect(() => {
-    const offset = 20
-    function onScroll() {
-      if (!isOpaque && window.scrollY > offset) {
-        setIsOpaque(true)
-      } else if (isOpaque && window.scrollY <= offset) {
-        setIsOpaque(false)
-      }
+  const offset = 20
+  function onScroll() {
+    if (!isOpaque && window.scrollY > offset) {
+      setIsOpaque(true)
+    } else if (isOpaque && window.scrollY <= offset) {
+      setIsOpaque(false)
     }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [isOpaque])
+  }
+  useEventListener('scroll', onScroll, {passive: true})
 
   return (
     <header className={
@@ -48,7 +43,7 @@ export default function Header(props: Readonly<HeaderProps>) {
             <div className="leading-15">
               <Link to="/">
                 <img className="object-cover dark:hidden w-[40px] h-[40px]" src={Logo} alt="logo" />
-                <img className="object-cover hidden dark:block w-[40px] h-[40px]"  src={LogoDark} alt="logo" />
+                <img className="object-cover hidden dark:block w-[40px] h-[40px]" src={LogoDark} alt="logo" />
               </Link>
             </div>
             {
@@ -67,6 +62,3 @@ export default function Header(props: Readonly<HeaderProps>) {
     </header>
   )
 }
-// sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75
-
-

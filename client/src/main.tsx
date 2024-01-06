@@ -8,7 +8,7 @@ import './assets/iconfont/iconfont.css'
 import './globals.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <div className="bg-p-1">
+  <div className="bg-p-1 min-h-svh">
     <React.StrictMode>
       <ConfigProvider
         theme={{
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <RouterProvider router={router} />
       </ConfigProvider>
     </React.StrictMode>
-  </div>,
+  </div>
 )

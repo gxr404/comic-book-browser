@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  // TODO
   important: true,
   darkMode: 'class',
   content: [
@@ -16,11 +15,6 @@ export default {
         'p-3': 'rgb(var(--c-p-3) / <alpha-value>)',
         'p-4': 'rgb(var(--c-p-4) / <alpha-value>)',
         's-1': 'rgb(var(--c-s-1) / <alpha-value>)'
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       boxShadow: {
         'br': 'inset 0 0 0 1px var(--c-br)',

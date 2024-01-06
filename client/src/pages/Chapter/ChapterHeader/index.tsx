@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '@/hooks/useTheme'
-import { BookInfoContext } from '@/components/Provider'
+import { BookInfoContext } from '@/pages/Chapter/Provider'
 
 interface ChapterHeaderProps {
   show: boolean,

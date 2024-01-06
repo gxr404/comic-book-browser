@@ -7,7 +7,10 @@ module.exports = {
     'types',
     'node_modules',
     'bin',
-    '*.d.ts'
+    'temp',
+    '*.d.ts',
+    '*.html',
+    '.eslintrc.cjs'
   ],
   extends: [
     'eslint:recommended',

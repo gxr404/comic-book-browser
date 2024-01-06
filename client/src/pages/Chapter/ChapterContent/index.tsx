@@ -1,6 +1,5 @@
-import { useContext, useState } from 'react'
-import { Empty } from 'antd'
-import { BookInfoContext, ChapterInfoContext } from '@/components/Provider'
+import { useContext, useRef, useState } from 'react'
+import { BookInfoContext, ChapterInfoContext } from '@/pages/Chapter/Provider'
 
 interface FCProps {
   bookName: string,
@@ -15,11 +14,18 @@ interface ComicImageProps {
 function ComicImage(props: Readonly<ComicImageProps>) {
   const {imagePath} = props
   const [loading, setLoading] = useState(true)
-  const onLoad = () => {
+  const imgRef = useRef<HTMLImageElement>(null)
+  // const warpImgRef = useRef<HTMLDivElement>(null)
+
+  const onLoad = (e: any) => {
     setLoading(false)
+    if (e?.target?.naturalHeight && imgRef.current) {
+      imgRef.current.style.setProperty('min-height', 'initial', 'important')
+      // warpImgRef.current.style.setProperty('min-height', 'initial', 'important')
+    }
   }
   return (
-    <li key={imagePath} className="flex min-h-[33vh] justify-center items-center relative">
+    <li key={imagePath} className="flex justify-center items-center relative">
       {
         loading &&
         <div className='flex absolute inset-0 z-0 justify-center items-center'>
@@ -29,6 +35,7 @@ function ComicImage(props: Readonly<ComicImageProps>) {
       <img
         className="w-full block min-h-[33vh] pointer-events-none relative z-[1]"
         loading="lazy"
+        ref={imgRef}
         onLoad={onLoad}
         src={imagePath}
         alt={imagePath}/>
@@ -58,11 +65,9 @@ const ChapterContent: React.FC<FCProps> = ({ bookName }) =>  {
     <section>
       {(bookInfo && imageListPath.length>0)
         ? <List bookName={bookName} imageListPath={imageListPath} />
-        : <Empty
-          className='h-lvh flex flex-col justify-center'
-          description={
-            <span className='dark:text-white'>Not Found</span>
-          }/>}
+        : <div className='h-lvh flex flex-col justify-center items-center'>
+            <span className='text-[26px] text-gray-600'>Not Found</span>
+          </div>}
     </section>
   )
 }

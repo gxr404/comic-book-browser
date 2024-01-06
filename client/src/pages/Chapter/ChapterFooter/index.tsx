@@ -1,8 +1,8 @@
-import { lazy, useContext, useState } from 'react'
+import { lazy, useCallback, useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { message } from 'antd'
 import { Virtuoso } from 'react-virtuoso'
-import { BookInfoContext, ChapterInfoContext } from '@/components/Provider'
+import { BookInfoContext, ChapterInfoContext } from '@/pages/Chapter/Provider'
 import useScrollToTop from '@/hooks/useScrollToTop'
 
 interface Props {
@@ -40,9 +40,9 @@ export default function ChapterFooter(props: Readonly<Props>) {
     }
   }
 
-  useScrollToTop(() => {
+  useScrollToTop(useCallback(() => {
     closeCatalog()
-  })
+  }, []))
 
 
   const goHome = () => {
@@ -109,7 +109,7 @@ export default function ChapterFooter(props: Readonly<Props>) {
               itemContent={(index,item) => (
                 <Link
                   className="border-b border-slate-900/10 dark:border-slate-300/10 truncate text-[14px] leading-[40px] block mx-[20px]"
-                  key={`${index}${item.href}`}
+                  key={`${index}${item.name}`}
                   to={`/detail/${bookInfo.name}/${item.name}`}
                 >
                 {item.rawName}

@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react'
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
+import { useLayoutEffect, useRef, useState } from 'react'
 
 const LOCAL_THEME_KEY = 'theme'
 
@@ -16,12 +15,12 @@ export function useTheme(): [string, Actions] {
   const [theme, setTheme] = useState<THEME>(THEME.LIGHT)
   const initial = useRef(true)
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     const newTheme = localStorage.getItem(LOCAL_THEME_KEY) as THEME || THEME.LIGHT
     setTheme(newTheme)
   }, [])
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (initial.current) {
       initial.current = false
     } else {

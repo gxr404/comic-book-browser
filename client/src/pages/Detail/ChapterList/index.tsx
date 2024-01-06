@@ -5,7 +5,7 @@ import BackTop from '@/components/BackTop'
 import { toReversed } from '@/utils'
 import { LOCAL_STORAGE_HISTORY } from '@/constant'
 import type { ILocalHistoryItem } from '@/constant'
-import type { ChaptersItem, ComicBookRes } from '@/api'
+import type { ChapterItem, ComicBookRes } from '@/api'
 
 interface FCProps {
   bookName: string,
@@ -14,16 +14,12 @@ interface FCProps {
 
 const ChaptersList: React.FC<FCProps> = ({ bookName, bookInfo }) =>  {
   const [reverse, setReverse] = useState(true)
-  const [historyChapterItem, setHistoryChapterItem] = useState<ChaptersItem>()
-  // const [chapters, setChapters] = useState(bookInfo?.chapters ?? [])
+  const [historyChapterItem, setHistoryChapterItem] = useState<ChapterItem>()
   let chapters = useMemo(()=> bookInfo?.chapters ?? [], [bookInfo])
   const lastChapters = chapters.at(-1)
   if (reverse) {
     chapters = toReversed(chapters)
   }
-  // useEffect(() => {
-  //   setChapters(chapters.toReversed())
-  // }, [reverse, chapters])
   const [localHistory] = useLocalStorageState<ILocalHistoryItem[]>(LOCAL_STORAGE_HISTORY, {
     defaultValue: []
   })

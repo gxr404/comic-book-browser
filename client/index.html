@@ -5,6 +5,15 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comic Browser</title>
+    <script>
+      try {
+        if (localStorage.theme === 'dark') {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      } catch (_) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

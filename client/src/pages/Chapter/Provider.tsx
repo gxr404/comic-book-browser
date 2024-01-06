@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { ComicBookRes, ComicChapterRes } from '@/api/index'
+import type { ComicBookRes, ComicChapterRes } from '@/api'
 
 interface BookInfoProviderProps {
   children: React.ReactNode
@@ -34,16 +34,14 @@ function BookInfoProvider ({ children, bookInfo }: Readonly<BookInfoProviderProp
 
 interface ChapterInfoProviderProps {
   children: React.ReactNode
-  chapterInfo: ComicChapterRes | undefined
+  chapterInfo: ComicChapterRes | null | undefined
 }
 
 const defaultComicChapter = {
   name: '',
-  href: '',
-  path: '',
-  imageList: [],
   imageListPath: [],
   rawName: '',
+  index: -1
 }
 
 const ChapterInfoContext = createContext<ComicChapterRes>(defaultComicChapter)

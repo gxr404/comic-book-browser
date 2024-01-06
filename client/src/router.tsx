@@ -1,4 +1,4 @@
-import { createHashRouter } from 'react-router-dom'
+import { Navigate, createHashRouter } from 'react-router-dom'
 import Home from '@/pages/Home'
 
 const router = createHashRouter([
@@ -19,6 +19,10 @@ const router = createHashRouter([
       const Chapter = await import('@/pages/Chapter')
       return {Component: Chapter.default}
     }
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" />
   }
 ])
 

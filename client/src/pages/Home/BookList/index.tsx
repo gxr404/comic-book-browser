@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { message } from 'antd'
 import { clearCache, useLocalStorageState } from 'ahooks'
-import { LOCAL_STORAGE_HISTORY, CACHE_KEY } from '@/constant'
 import * as api from '@/api/index'
 import type { BookInfo } from '@/api/index'
+import { LOCAL_STORAGE_HISTORY, CACHE_KEY } from '@/constant'
 import type { ILocalHistoryItem } from '@/constant'
 
 interface BookListProps {

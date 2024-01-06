@@ -11,5 +11,5 @@ export default function useScrollToTop(callback: () => void) {
     window.scrollTo({
       top: 0
     })
-  }, [pathname])
+  }, [pathname, callback])
 }
