@@ -1,37 +1,30 @@
 import { mementoFn } from '@/utils/cache'
 import { scanFolder } from '@/routes/api/core'
+import type { RawBookInfo } from '@/routes/api/core'
 import { excludeProperty } from '@/utils/index'
 
-export interface BookInfo {
-  name: string,
-  pathName: string,
-  author: string,
-  desc: string,
-  coverUrl: string,
-  coverPath: string,
-  url: string,
-  language: string,
-  rawUrl: string,
+/** 排除掉 chapters coverUrl, 添加lastChapter最新章节内容 */
+interface BookInfo extends Omit<RawBookInfo, 'chapters'|'coverUrl'> {
   lastChapter: {
     rawName: string | undefined
   }
 }
+type GetComicBookListRes = BookInfo[]
 
-async function fetchComicBookList(bookPath: string): Promise<BookInfo[]> {
+async function getComicBookList(bookPath: string): Promise<GetComicBookListRes> {
   const bookInfoList = await scanFolder(bookPath)
   return bookInfoList.map(bookInfo => {
     const lastChapter = bookInfo.chapters.at(-1)
-    const bookInfoItem: any = excludeProperty(bookInfo, ['chapters', 'coverUrl'])
+    const bookInfoItem = excludeProperty(bookInfo, ['chapters', 'coverUrl'])
     bookInfoItem.lastChapter = {
       rawName: lastChapter?.rawName
     }
-    return bookInfoItem as BookInfo
+    return bookInfoItem
   })
 }
 
-
-const cacheFetchComicBookList = mementoFn(fetchComicBookList)
+const cacheGetComicBookList = mementoFn(getComicBookList)
 
 export {
-  cacheFetchComicBookList as fetchComicBookList,
+  cacheGetComicBookList as getComicBookList,
 }

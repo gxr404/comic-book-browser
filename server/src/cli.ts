@@ -27,6 +27,7 @@ cli.version(version)
 
 try {
   const { options } = cli.parse()
+  // help version 不执行
   if (!options.help && !options.version) {
     run(options as IOptions)
   }

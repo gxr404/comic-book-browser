@@ -1,37 +1,15 @@
 import { mementoFn } from '@/utils/cache'
 import { scanBookFolder } from '@/routes/api/core'
+import type { RawBookInfo, RawChaptersItem } from '@/routes/api/core'
 import { excludeProperty } from '@/utils/index'
 
-export interface ChaptersItem {
-  name: string,
-  href: string,
-  path: string,
-  rawName: string,
-  preChapter?: {
-    name: string,
-    href: string,
-    rawName: string
-  },
-  nextChapter?: {
-    name: string,
-    href: string,
-    rawName: string
-  },
+
+type OmitChapterItem = Omit<RawChaptersItem, 'imageList' | 'imageListPath' | 'preChapter'| 'nextChapter'| 'href'>
+interface GetComicBookRes extends Omit<RawBookInfo, 'chapters' | 'coverUrl'> {
+  chapters: OmitChapterItem[]
 }
 
-export interface FetchComicBookRes {
-  name: string,
-  pathName: string,
-  author: string,
-  desc: string,
-  coverUrl: string,
-  coverPath: string,
-  chapters: ChaptersItem[],
-  url: string,
-  language: string,
-  rawUrl: string
-}
-async function fetchComicBook(bookPath: string, comicBookName: string): Promise<FetchComicBookRes | null> {
+async function getComicBook(bookPath: string, comicBookName: string): Promise<GetComicBookRes | null> {
   const bookInfo = await scanBookFolder(bookPath, comicBookName)
   if (!bookInfo) return null
   const resBookInfo = excludeProperty(bookInfo, ['chapters', 'coverUrl'])
@@ -41,8 +19,8 @@ async function fetchComicBook(bookPath: string, comicBookName: string): Promise<
   return resBookInfo
 }
 
-const cacheFetchComicBook = mementoFn(fetchComicBook)
+const cacheGetComicBook = mementoFn(getComicBook)
 
 export {
-  cacheFetchComicBook as fetchComicBook
+  cacheGetComicBook as getComicBook
 }

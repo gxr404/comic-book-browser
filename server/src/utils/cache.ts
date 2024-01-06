@@ -1,9 +1,7 @@
+type anyFn = (...args: any[]) => any
+
 const caches = new Map<any, Map<any, any>>()
 
-// type TMementoFnPrams = () => any
-// type TMementoFn<T extends () => any > = (fn: T) => ReturnType<T>
-// function Modifier<T>(func: (params: T) => Obj | Promise<Obj>): (params: T) => Promise<Obj2>;
-type anyFn = (...args: any[]) => any
 function mementoFn<T extends anyFn> (fn:T): T {
   const resFn = (...args: any[]) => {
     let currentCache = caches.get(fn)
@@ -35,7 +33,6 @@ function mementoFn<T extends anyFn> (fn:T): T {
   }
   return resFn as T
 }
-
 
 function cleanCache() {
   caches.clear()

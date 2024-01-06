@@ -1,5 +1,4 @@
 import Koa from 'koa'
-import bodyParser from 'koa-bodyparser'
 import serve from 'koa-static'
 import path from 'node:path'
 import fs from 'node:fs'
@@ -10,10 +9,6 @@ import { IOptions } from './cli'
 import { logger } from './utils/log'
 import { scanFolder } from './routes/api/core'
 
-interface ContextGlobal {
-  staticPath: string
-}
-
 export function run(config: IOptions) {
   const staticPath = path.resolve(config.bookPath)
   const bookPath = path.join(staticPath, 'comic-book')
@@ -23,22 +18,27 @@ export function run(config: IOptions) {
     logger.error('× 不存在 comic-book 目录')
     return
   }
-  const clientPath = path.join(fileURLToPath(import.meta.url), '../../client-dist')
+
+  const clientPath = path.join(
+    fileURLToPath(import.meta.url),
+    '../../client-dist'
+  )
+
   const app = new Koa()
+  // 设置全局上下文 后续路由可取
   app.context.G = {
     staticPath,
     bookPath: bookPath
-  } as ContextGlobal
-
-  app.use(bodyParser())
+  }
   app.use(router.routes())
+  // 挂载静态资源目录
   app.use(mount('/public', serve(staticPath)))
+  // 挂载客户端目录
   app.use(mount('/', serve(clientPath)))
   app.listen(config.port, () => {
     logger.info(` \\(^o^)/ 服务已启动 请用浏览器打开 http://127.0.0.1:${config.port}`)
     // 提前扫描目录
     scanFolder(bookPath)
   })
-
 }
 

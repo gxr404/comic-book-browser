@@ -1,11 +1,14 @@
 import { mementoFn } from '@/utils/cache'
-import { RawChaptersItem, scanBookFolder } from '@/routes/api/core'
+import { scanBookFolder } from '@/routes/api/core'
+import type { RawChaptersItem } from '@/routes/api/core'
 import { excludeProperty } from '@/utils'
 
-async function fetchComicChapter(bookPath: string, comicBookName: string, chapterName: string): Promise<RawChaptersItem | null> {
-  const bookInfo = await scanBookFolder(bookPath, comicBookName)
+type GetComicChapterRes = Omit<RawChaptersItem, 'imageList'|'href'>
+
+type GetComicChapter= (bookPath: string, bookName: string, chapterName: string) => Promise<GetComicChapterRes | null>
+const getComicChapter: GetComicChapter = async (bookPath, bookName, chapterName) => {
+  const bookInfo = await scanBookFolder(bookPath, bookName)
   if (!bookInfo) return null
-  // imageList
   let res = bookInfo.chapters.find(chapter => {
     return chapter.name == chapterName
   }) ?? null
@@ -21,8 +24,8 @@ async function fetchComicChapter(bookPath: string, comicBookName: string, chapte
   return res
 }
 
-const cacheFetchComicChapter = mementoFn(fetchComicChapter)
+const cacheGetComicChapter = mementoFn(getComicChapter)
 
 export {
-  cacheFetchComicChapter as fetchComicChapter
+  cacheGetComicChapter as getComicChapter
 }
