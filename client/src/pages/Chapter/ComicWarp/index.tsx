@@ -21,12 +21,11 @@ export default function ComicWarp({ children, chapterName, bookName }: Readonly<
   })
   const tempScrollTop = useRef(0)
   const chapterInfo = useContext(ChapterInfoContext)
-  // const chapterInfo = bookInfo.chapters.find(item => item.name === chapterName)
 
   const onScroll = () => {
-    const { scrollTop, scrollHeight,clientHeight } = document.documentElement
-    // 滚到底部 快10像素时显示窗口
-    const isScrollEnd = clientHeight - (scrollHeight - scrollTop) >= -40
+    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+    // 滚到底部 快40像素时显示窗口
+    const isScrollEnd = window.scrollY + window.innerHeight + 40 >= document.documentElement.scrollHeight
     // 向上滚显示菜单 向下滚隐藏菜单
     setShowMenu(scrollTop <= tempScrollTop.current || isScrollEnd)
     tempScrollTop.current = scrollTop

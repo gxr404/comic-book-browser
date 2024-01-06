@@ -26,6 +26,7 @@
 
 :root.dark {
   color-scheme: dark;
+  color: white;
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
@@ -45,7 +46,9 @@
   /* bg-slate-900\/75 */
 }
 
-
+body {
+  -webkit-overflow-scrolling: touch;
+}
 
 @layer base {
   a:active {

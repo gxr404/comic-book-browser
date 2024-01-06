@@ -51,7 +51,7 @@ export default function Search(props: Readonly<SearchProps>) {
         <div className="relative group">
           <i className="iconfont icon-search absolute left-[10px] top-[7px] text-black/30 dark:text-gray-50/20" />
           <input className="h-[38px] rounded-full outline-0 px-4 pl-[34px] transition-all
-            dark:caret-white dark:text-white text-[14px]
+            caret-p-3/80 dark:text-white text-[14px]
             border border-slate-900/10
             dark:border-slate-300/10
             placeholder:text-black/30 dark:placeholder:text-gray-50/20
