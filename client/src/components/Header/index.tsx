@@ -40,7 +40,7 @@ export default function Header(props: Readonly<HeaderProps>) {
       <div className="max-w-[90rem] mx-auto">
         <div className="py-2 lg:px-8 mx-4 lg:mx-0 text-s-1">
           <div className="relative flex items-center justify-between">
-            <div className="leading-15">
+            <div className="leading-15 min-w-[40px]">
               <Link to="/">
                 <img className="object-cover dark:hidden w-[40px] h-[40px]" src={Logo} alt="logo" />
                 <img className="object-cover hidden dark:block w-[40px] h-[40px]" src={LogoDark} alt="logo" />
@@ -50,7 +50,10 @@ export default function Header(props: Readonly<HeaderProps>) {
               bookInfoList?.length > 0 &&
               <Search bookInfoList={bookInfoList}/>
             }
-            <div>
+            <div className="flex">
+              <a className="rounded-full p-1 font-bold hidden sm:block" href="https://github.com/gxr404/comic-book-browser" target="_blank">
+                <i className="iconfont icon-github hover:text-p-3 text-[24px]"></i>
+              </a>
               <button className="rounded-full p-1 font-bold" onClick={switchTheme}>
                 <i className="iconfont icon-sun hover:text-p-3 text-[20px] dark:hidden"></i>
                 <i className="iconfont icon-moon hover:text-p-3 text-[20px] hidden dark:inline"></i>

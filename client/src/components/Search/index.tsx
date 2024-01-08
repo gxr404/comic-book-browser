@@ -40,7 +40,7 @@ export default function Search(props: Readonly<SearchProps>) {
   }
 
   return (
-    <div className="h-[38px] px-4 w-full md:w-1/3 md:ml-auto max-w-[300px]">
+    <div className="h-[38px] px-2 w-full md:w-1/3 md:ml-auto max-w-[300px]">
       <AutoComplete
         onSearch={onSearch}
         onSelect={onSelect}
