@@ -50,11 +50,11 @@ $ comic-book-browser
 
 `comic-book-browser`提供了两套主题、适配移动端、界面简洁
 
-![view-1](./docs/view-1.png)
-![view-2](./docs/view-2.png)
-![view-3](./docs/view-3.png)
-![view-4](./docs/view-4.png)
-![view-5](./docs/view-5.png)
+<img width="500" src="./docs/view-1.png" alt="view-1">
+<img width="500" src="./docs/view-2.png" alt="view-2">
+<img width="500" src="./docs/view-3.png" alt="view-3">
+<img width="370" src="./docs/view-4.png" alt="view-4">
+<img width="370" src="./docs/view-5.png" alt="view-5">
 
 ## 功能与建议
 
