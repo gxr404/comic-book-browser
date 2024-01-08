@@ -40,7 +40,7 @@ $ comic-book-browser --help
     -v, --version         Display version number
 ```
 
-### Start
+## Start
 
 使用 [comic-book-dl](https://github.com/gxr404/comic-book-dl) 下载完漫画后在当前含有`comic-book`目录
 执行:
@@ -66,7 +66,12 @@ $ comic-book-browser
     │       ....
 ```
 
-### 界面
+## 常见问题
+
+- 新增漫画时如果刷新没显示新漫画?
+  - 可点击右下角清理缓存，或者重新启动`comic-book-browser`服务即可
+
+## 界面
 
 `comic-book-browser`提供了两套主题、适配移动端、界面简洁
 

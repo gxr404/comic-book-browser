@@ -37,6 +37,7 @@ export function run(config: IOptions) {
   app.use(mount('/', serve(clientPath)))
   app.listen(config.port, () => {
     logger.info(` \\(^o^)/ 服务已启动 请用浏览器打开 http://127.0.0.1:${config.port}`)
+    logger.info('(つ•̀ω•́)つ 欢迎star: https://github.com/gxr404/comic-book-browser')
     // 提前扫描目录
     scanFolder(bookPath)
   })
