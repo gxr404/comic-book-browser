@@ -10,7 +10,8 @@ module.exports = {
     'temp',
     '*.d.ts',
     '*.html',
-    '.eslintrc.cjs'
+    '.eslintrc.cjs',
+    'docs'
   ],
   extends: [
     'eslint:recommended',
