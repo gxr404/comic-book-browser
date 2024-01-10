@@ -1,5 +1,5 @@
 import { lazy, useCallback, useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { message } from 'antd'
 import { Virtuoso } from 'react-virtuoso'
 import { BookInfoContext, ChapterInfoContext } from '@/pages/Chapter/Provider'
@@ -17,7 +17,7 @@ export default function ChapterFooter(props: Readonly<Props>) {
   const bookInfo = useContext(BookInfoContext)
   const chapterInfo = useContext(ChapterInfoContext)
   const { nextChapter, preChapter } = chapterInfo ?? {}
-
+  const { chapterName = '' } = useParams()
   const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage()
 
@@ -26,7 +26,6 @@ export default function ChapterFooter(props: Readonly<Props>) {
   const closeCatalog = () => setShowCatalog(false)
 
   let msgExist = false
-
   function messageLog(msg: string) {
     if (!msgExist) {
       msgExist = true
@@ -108,7 +107,9 @@ export default function ChapterFooter(props: Readonly<Props>) {
               data={bookInfo?.chapters}
               itemContent={(index,item) => (
                 <Link
-                  className="border-b border-slate-900/10 dark:border-slate-300/10 truncate text-[14px] leading-[40px] block mx-[20px]"
+                  className={`border-b border-slate-900/10 dark:border-slate-300/10 truncate text-[14px] leading-[40px] block mx-[20px] ${
+                    chapterName === item.name ? 'text-p-3 font-bold' : ''
+                  }`}
                   key={`${index}${item.name}`}
                   to={`/detail/${bookInfo.name}/${item.name}`}
                 >
