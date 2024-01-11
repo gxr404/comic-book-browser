@@ -57,4 +57,7 @@ body {
   a:hover {
     @apply text-p-3;
   }
+  img {
+    @apply pointer-events-none
+  }
 }
