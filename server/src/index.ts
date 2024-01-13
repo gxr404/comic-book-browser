@@ -8,6 +8,7 @@ import mount from 'koa-mount'
 import { IOptions } from './cli'
 import { logger } from './utils/log'
 import { scanFolder } from './routes/api/core'
+import { getIPAdress } from './utils'
 
 export function run(config: IOptions) {
   const staticPath = path.resolve(config.bookPath)
@@ -36,7 +37,11 @@ export function run(config: IOptions) {
   // 挂载客户端目录
   app.use(mount('/', serve(clientPath)))
   app.listen(config.port, () => {
-    logger.info(` \\(^o^)/ 服务已启动 请用浏览器打开 http://127.0.0.1:${config.port}`)
+    const ip = getIPAdress()
+    let infoStr = ' \\(^o^)/ 服务已启动 请用浏览器打开'
+    if (ip !== '127.0.0.1') infoStr += ` http://${ip}:${config.port} or`
+    infoStr += ` http://127.0.0.1:${config.port}`
+    logger.info(infoStr)
     logger.info('(つ•̀ω•́)つ 欢迎star: https://github.com/gxr404/comic-book-browser')
     // 提前扫描目录
     scanFolder(bookPath)

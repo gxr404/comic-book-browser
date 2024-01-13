@@ -1,3 +1,5 @@
+import os from 'node:os'
+
 export function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
@@ -13,4 +15,20 @@ export function excludeProperty(obj: any, propertyArr: string[]) {
     }
   }
   return res
+}
+
+/** 获取本机ip地址 */
+export function getIPAdress() {
+  const interfaces = os.networkInterfaces()
+  for (const [, iface] of Object.entries(interfaces)) {
+    if (!iface) continue
+    for (const alias of iface) {
+      if (alias.family === 'IPv4'
+        && alias.address !== '127.0.0.1'
+        && !alias.internal) {
+        return alias.address
+      }
+    }
+  }
+  return '127.0.0.1'
 }
