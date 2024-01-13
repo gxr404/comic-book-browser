@@ -59,7 +59,7 @@ export default function ComicWarp({ children, chapterName, bookName }: Readonly<
   return (
     <>
       <ChapterHeader show={showMenu} chapterName={chapterName}/>
-      <div onClick={() => setShowMenu(!showMenu)}>
+      <div onDoubleClick={() => setShowMenu(!showMenu)}>
         <main className="max-w-screen-md mx-auto">
           {children}
         </main>
