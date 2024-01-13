@@ -37,12 +37,12 @@ export function run(config: IOptions) {
   // 挂载客户端目录
   app.use(mount('/', serve(clientPath)))
   app.listen(config.port, () => {
+    logger.info('(つ•̀ω•́)つ 欢迎star: https://github.com/gxr404/comic-book-browser')
     const ip = getIPAdress()
-    let infoStr = ' \\(^o^)/ 服务已启动 请用浏览器打开'
+    let infoStr = '√ 服务已启动,请用浏览器打开'
     if (ip !== '127.0.0.1') infoStr += ` http://${ip}:${config.port} or`
     infoStr += ` http://127.0.0.1:${config.port}`
     logger.info(infoStr)
-    logger.info('(つ•̀ω•́)つ 欢迎star: https://github.com/gxr404/comic-book-browser')
     // 提前扫描目录
     scanFolder(bookPath)
   })
