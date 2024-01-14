@@ -73,7 +73,7 @@ function renderItem(bookInfo: BookInfo, text: string) {
   const lastChapter = bookInfo.lastChapter
   return (
     <div className="flex text-white group justify-between">
-      <div className="overflow-hidden rounded-sm">
+      <div className="overflow-hidden rounded-sm min-w-[45px]">
         <img
           className="object-cover group-hover:scale-110 transition w-[45px] min-w-[45px] h-[60px]"
           src={bookInfo.coverPath} alt={bookInfo.name} />
