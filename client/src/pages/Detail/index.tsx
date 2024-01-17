@@ -42,13 +42,13 @@ export default function Detail() {
           <>
             <div className="flex flex-col md:flex-row items-center">
               <div className={`flex align-center justify-center transition
-                w-[200px] h-[266px] rounded-md overflow-hidden
+                w-[200px] min-w-[200px] h-[266px] rounded-md overflow-hidden
                 -mt-[140px] bg-p-2
                 border border-slate-900/10 dark:border-slate-300/10
                 shadow-cover-1 dark:shadow-cover-2`}>
                   <img className="w-[200px] h-[266px] object-cover" src={bookInfo.coverPath} alt={bookInfo.pathName} />
               </div>
-              <div className="flex-1 pl-0 md:pl-10 text-gray-400 mt-6 md:mt-0">
+              <div className="pl-0 md:pl-10 text-gray-400 mt-6 md:mt-0 w-full overflow-x-auto">
                 <p className="text-lg truncate pb-2 text-black dark:text-white">{bookName}</p>
                 <p className="text-sm truncate pb-2">{bookInfo.author}</p>
                 <p className="text-sm line-clamp-3">{bookInfo.desc}</p>
