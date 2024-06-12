@@ -75,10 +75,10 @@ $ comic-book-browser
 
 `comic-book-browser`提供了两套主题、适配移动端、界面简洁
 
-<img width="500" src="https://github.com/gxr404/comic-book-browser/assets/17134256/dacdcd86-eddb-46e2-9869-6c91d5e34aab" alt="view-1">
-<img width="500" src="https://github.com/gxr404/comic-book-browser/assets/17134256/c5eb47c3-acb1-4108-a5c4-181d1c2d3498" alt="view-2">
-<img width="500" src="https://github.com/gxr404/comic-book-browser/assets/17134256/8b6bb7c4-f87a-4df0-818e-39421cddd286" alt="view-3">
-<img width="370" src="https://github.com/gxr404/comic-book-browser/assets/17134256/61c1115b-b678-4572-9f45-f6ba82a4f1f9" alt="view-4">
+<img width="500" src="https://github.com/gxr404/comic-book-browser/assets/17134256/dacdcd86-eddb-46e2-9869-6c91d5e34aab" alt="view-1"><br/>
+<img width="500" src="https://github.com/gxr404/comic-book-browser/assets/17134256/c5eb47c3-acb1-4108-a5c4-181d1c2d3498" alt="view-2"><br/>
+<img width="500" src="https://github.com/gxr404/comic-book-browser/assets/17134256/8b6bb7c4-f87a-4df0-818e-39421cddd286" alt="view-3"><br/>
+<img width="370" src="https://github.com/gxr404/comic-book-browser/assets/17134256/61c1115b-b678-4572-9f45-f6ba82a4f1f9" alt="view-4"><br/>
 <img width="370" src="https://github.com/gxr404/comic-book-browser/assets/17134256/225e1c3b-cf73-409e-a61a-65264ee15f57" alt="view-5">
 
 ## 功能与建议
