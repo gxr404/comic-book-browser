@@ -3,6 +3,7 @@
     "ahooks",
     "antd",
     "iconfont",
+    "qrcode",
     "tailwindcss"
   ]
 }

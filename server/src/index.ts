@@ -1,10 +1,11 @@
-import Koa from 'koa'
-import serve from 'koa-static'
 import path from 'node:path'
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import router from './routes/index'
+import Koa from 'koa'
+import serve from 'koa-static'
 import mount from 'koa-mount'
+import qrcode from 'qrcode-terminal'
+import router from './routes/index'
 import { IOptions } from './cli'
 import { logger } from './utils/log'
 import { scanFolder } from './routes/api/core'
@@ -39,12 +40,30 @@ export function run(config: IOptions) {
   app.listen(config.port, () => {
     logger.info('(つ•̀ω•́)つ 欢迎star: https://github.com/gxr404/comic-book-browser')
     const ip = getIPAdress()
+    let internalNetwork = ''
+    const localNetwork = `http://127.0.0.1:${config.port}`
     let infoStr = '√ 服务已启动,请用浏览器打开'
-    if (ip !== '127.0.0.1') infoStr += ` http://${ip}:${config.port} or`
-    infoStr += ` http://127.0.0.1:${config.port}`
+    if (ip !== '127.0.0.1') {
+      internalNetwork = `http://${ip}:${config.port}`
+      infoStr += `${internalNetwork} or`
+    }
+    infoStr += ` ${localNetwork}`
     logger.info(infoStr)
+    echoQRcode(internalNetwork || localNetwork)
     // 提前扫描目录
     scanFolder(bookPath)
   })
 }
 
+export function echoQRcode(url: string) {
+  return new Promise((resolve, reject) => {
+    try {
+      qrcode.generate(url, { small: true }, (qrcode: string) => {
+        console.log(qrcode)
+        resolve(qrcode)
+      })
+    } catch(e) {
+      reject(e)
+    }
+  })
+}

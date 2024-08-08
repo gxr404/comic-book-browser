@@ -42,13 +42,15 @@
     "koa-mount": "^4.0.0",
     "koa-static": "^5.0.0",
     "log4js": "^6.9.1",
-    "p-limit": "^5.0.0"
+    "p-limit": "^5.0.0",
+    "qrcode-terminal": "^0.12.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.12",
     "@types/koa__router": "^12.0.4",
     "@types/koa-mount": "^4.0.5",
     "@types/koa-static": "^4.0.4",
+    "@types/qrcode-terminal": "^0.12.2",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
